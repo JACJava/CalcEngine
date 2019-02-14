@@ -1,0 +1,38 @@
+package com.pluralsight.calcengine3;
+
+public class Adder extends CalculateBase implements MathProcessing {
+
+    public Adder() {}
+
+    public Adder(double leftVal, double rightVal) {
+        super(leftVal, rightVal);
+    }
+
+    // when you write "implements mathProcessing above, you get the red light, and then click
+    // implement methods -- that pulls in the below methods into the code
+    // you ahve to type in the return values -- i.e. return "add"
+    @Override
+    public void calculate() {
+        double value = getLeftVal() + getRightVal();
+        setResult(value);
+    }
+
+    @Override
+    public String getKeyword() {
+        return "add";
+    }
+
+    @Override
+    public char getSymbol() {
+        return '+';
+    }
+
+    @Override
+    public double doCalculation(double leftVal, double rightVal) {
+        setLeftVal(leftVal);
+        setRightVal(rightVal);
+        calculate();
+
+        return getResult();
+    }
+}
