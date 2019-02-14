@@ -117,6 +117,24 @@ public class Main {
         System.out.print("Result with Int2 = ");
         System.out.println(equationOverload3.getResult());
 
+        // 20180730 Using Overloads
+        System.out.println();
+        System.out.print("*** Using Inheritance ***");
+        System.out.println();
+
+        // declare an array of type Calculate Base
+        CalculateBase[] calculators = {
+            new Divider(100.0d, 50.0d),
+            new Adder(25d, 92d),
+            new Subtracter(225.0d, 17.0d),
+            new Multiplier(11.0d, 3.0d),
+        };
+
+        for (CalculateBase calculator:calculators) {
+            calculator.calculate();
+            System.out.print("Result with Inheritance = ");
+            System.out.println(calculator.getResult());
+        }
 
 
     }
