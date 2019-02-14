@@ -1,173 +1,183 @@
-package com.pluralsight.looping;
+package com.pluralsight.calcengine3;
 
 public class Main {
 
     public static void main(String[] args) {
 
-/*
-    int kVal = 5;
-    int factorial = 1;
 
+        Earth planet1 = new Earth();
+        planet1.printEarth();
 
-    // While Loop
-    while(kVal > 1) {
-        factorial *= kVal;
-        kVal -= 1;
-        System.out.println(factorial);
-        System.out.println(kVal);
-    }
+        // Test to see how to initialize opcode to 'a'
+        //MathEquation testEquation = new MathEquation();
+        //testEquation.execute();
+        //System.out.print("Test = ");
+        //System.out.println(testEquation.getResult());
 
-    while(kVal > 1)
-        factorial *= kVal--;
-        System.out.println(factorial);
-        System.out.println(kVal);
+        // define an array of math equation classes, still need to create the instances for each array member
+        MathEquation[] equations_class = new MathEquation[4];
+        // e.g. Flight lax1 = new Flight();
 
+        /*
+        // define each array instance
+        equations_class[0] = new MathEquation();
+        equations_class[1] = new MathEquation();
+        equations_class[2] = new MathEquation();
+        equations_class[3] = new MathEquation();
 
+        //define each variable in each instance
+        equations_class[0].leftVal = 100.0d;
+        equations_class[0].rightVal = 50.0d;
+        equations_class[0].opCode = 'd';
 
-    //Do-While Loop, check condition at end of loop, will always execute one time
+        equations_class[1].leftVal = 25.0d;
+        equations_class[1].rightVal = 92.0d;
+        equations_class[1].opCode = 'a';
 
-    int iVal = 5;
+        equations_class[2].leftVal = 225.0d;
+        equations_class[2].rightVal = 17.0d;
+        equations_class[2].opCode = 's';
 
-    do {
+        equations_class[3].leftVal = 11.0d;
+        equations_class[3].rightVal = 3.0d;
+        equations_class[3].opCode = 'm';
 
-        System.out.print(iVal);
-        System.out.print(" * 2 = ");
-        iVal *= 2;
-        System.out.println(iVal);
-
-    } while(iVal < 100);
-
-*/
-
-    //For Loop, condition checked at loop
-    /*
-    int iVal = 1;
-
-    while(iVal < 100) {
-        System.out.println(iVal);
-        iVal *= 2;
-    }
-
-
-     for (int iVal = 1; iVal < 100; iVal *=2) {
-         System.out.println(iVal);
-         System.out.println("hello");
-     }
-
-
-    float[] theVals = new float[3];
-
-    theVals[0] = 10.0f;
-    theVals[1] = 20.0f;
-    theVals[2] = 15.0f;
-
-    float sum = 0.0f;
-
-    for (int i = 0; i < theVals.length; i++)
-        sum += theVals[i];
-
-    System.out.println(sum);
-
-
-
-    float[] theVals = {10.0f, 20.0f, 15.0f};
-
-    float sum = 0.0f;
-
-    for (int i = 0; i < theVals.length; i++)
-        sum += theVals[i];
-
-    System.out.println(sum);
-
-
-    float[] theVals = {10.0f, 20.0f, 15.0f};
-    float sum = 0.0f;
-
-    for(float currentval : theVals)
-        sum += currentval;
-
-    System.out.println(sum);
-
-
-    int iVal = 11;
-
-    switch(iVal % 2) {
-        case 0:
-            System.out.print(iVal);
-            System.out.println(" is even");
-            break;
-        case 1:
-            System.out.print(iVal);
-            System.out.println(" is odd");
-            break;
-        default:
-            System.out.println("oops it broke");
-            break;
-    }
-
-
-    // parallel arrrays
-
-    double[] leftVals = {100.0d, 25.0d, 225.0d, 11.0d};
-    double[] rightVals = {50.0d, 92.0d, 17.0d, 3.0d};
-    char[] opCodes = {'d', 'a', 's', 'm'};
-    double[] results = new double[opCodes.length];
-
-    for (int i = 0; i < opCodes.length; i++)
-        if (opCodes[i] == 'a')
-            results[i] = leftVals[i] + rightVals[i];
-
-        else if (opCodes[i] == 's')
-            results[i] = leftVals[i] - rightVals[i];
-
-        else if (opCodes[i] == 'm')
-            results[i] = leftVals[i] * rightVals[i];
-
-        else if (opCodes[i] == 'd') {
-            results[i] = rightVals[i] != 0.0d ? leftVals[i] / rightVals[i] : 0.0d;
-        }
-        else {
-            System.out.println("Error - invalid opCode");
-            results[i] = 0.0d;
-        }
-
-        for(double theResult : results) {
-            System.out.print("Result = ");
-            System.out.println(theResult);
-        }
-*/
-    // parallel arrrays
-
-    double[] leftVals = {100.0d, 25.0d, 225.0d, 11.0d};
-    double[] rightVals = {50.0d, 92.0d, 17.0d, 3.0d};
-    char[] opCodes = {'d', 'a', 's', 'm'};
-    double[] results = new double[opCodes.length];
-
-    for (int i = 0; i < opCodes.length; i++)
-        switch (opCodes[i]) {
-
-            case 'a':
-                results[i] = leftVals[i] + rightVals[i];
-                break;
-            case 's':
-                results[i] = leftVals[i] - rightVals[i];
-                break;
-            case 'm':
-                results[i] = leftVals[i] * rightVals[i];
-                break;
-            case 'd':
-                results[i] = rightVals[i] != 0.0d ? leftVals[i] / rightVals[i] : 0.0d;
-                break;
-            default:
-                System.out.println("Error - invalid opCode");
-                results[i] = 0.0d;
-                break;
-        }
-
-    for(double theResult : results) {
+        //execute to do the math and print the result
+        equations_class[0].execute();
         System.out.print("Result = ");
-        System.out.println(theResult);
-    }
+        System.out.println(equations_class[0].result);
+
+        equations_class[1].execute();
+        System.out.print("Result = ");
+        System.out.println(equations_class[1].result);
+
+        equations_class[2].execute();
+        System.out.print("Result = ");
+        System.out.println(equations_class[2].result);
+
+        equations_class[3].execute();
+        System.out.print("Result = ");
+        System.out.println(equations_class[3].result);
+        */
+
+        // OR -- write a loop to do all of the above */
+
+        // fill those equation classes with values using the create method below
+        //equations_class[0] = create_eq_instance(100.0d, 50.0d, 'd');
+        //equations_class[1] = create_eq_instance(25.0d, 92.0d, 'a');
+        //equations_class[2] = create_eq_instance(225.0d, 17.0d, 's');
+        //equations_class[3] = create_eq_instance(11.0d, 3.0d, 'm');
+
+        // Use new constructors to initialize values
+        equations_class[0] = new MathEquation('d',100.0d, 50.0d);
+        equations_class[1] = new MathEquation('a',25.0d, 92.0d);
+        equations_class[2] = new MathEquation('s',225.0d, 17.0d);
+        equations_class[3] = new MathEquation('m',11.0d, 3.0d);
+
+        for(MathEquation equation_loop : equations_class) {
+            equation_loop.execute();
+            System.out.print("Result = ");
+            System.out.println(equation_loop.getResult());
+        }
+
+        // 20180716 Using Overloads
+        System.out.println();
+        System.out.print("*** Using Overloads ***");
+        System.out.println();
+
+        double leftDouble = 9.0d;
+        double rightDouble = 4.0d;
+
+        MathEquation equationOverload = new MathEquation('d');
+
+        equationOverload.execute(leftDouble,rightDouble);
+        System.out.print("Result with Double = ");
+        System.out.println(equationOverload.getResult());
+
+
+        // will this work with integers rather than doubles even tho double is specified in the execute method??
+        int leftInt = 9;
+        int rightInt = 4;
+
+        MathEquation equationOverload2 = new MathEquation('d');
+
+        equationOverload2.execute(leftInt,rightInt);
+        System.out.print("Result with Int = ");
+        System.out.println(equationOverload2.getResult());
+
+        // yes!  it works cuz integers get widened to doubles  -- but then we add an integer execute!
+
+        // will this work with integers rather than doubles even tho double is specified in the execute method??
+        int leftInt2 = 9;
+        int rightInt2 = 4;
+
+        MathEquation equationOverload3 = new MathEquation('d');
+
+        equationOverload3.execute((double)leftInt2,rightInt2); // will choose two doubles
+        System.out.print("Result with Int2 = ");
+        System.out.println(equationOverload3.getResult());
+
+        // 20180730 Using Overloads
+        System.out.println();
+        System.out.print("*** Using Inheritance ***");
+        System.out.println();
+
+        // declare an array of type Calculate Base
+        CalculateBase[] calculators = {
+            new Divider(100.0d, 50.0d),
+            new Adder(25d, 92d),
+            new Subtracter(225.0d, 17.0d),
+            new Multiplier(11.0d, 3.0d),
+        };
+
+        for (CalculateBase calculator:calculators) {
+            calculator.calculate();
+            System.out.print("Result with Inheritance = ");
+            System.out.println(calculator.getResult());
+        }
+
+        // 20180801 More about data types
+        // 20180803 Exceptions and Error Handling
+        System.out.println();
+        System.out.println("*** Exceptions and Error Handling ***");
+        System.out.println();
+        String[] statements = { //string array that has the strings we want to parse
+                "add 1.0",              //Error:  incorrect number of values
+                "add xx 25.0",          //Error:  non-numeric data
+                "addx 0.0 0.0",         //Error:  invalid command
+                "divide 100.0 50.0",    //100.0 / 50.0 = 2.0
+                "add 25.0 92.0",        //25.0 + 92.0 = 117.0
+                "subtract 225.0 17.0",  //225.0 - 17.0 = 108.0
+                "multiply 11.0 3.0"     //11.0 * 3.0 = 33.0
+        };
+
+        System.out.println(statements[0]);
+        System.out.println(statements[1]);
+        System.out.println(statements[2]);
+        System.out.println(statements[3]);
+        System.out.println(statements[4]);
+        System.out.println(statements[5]);
+        System.out.println(statements[6]);
+
+        System.out.println();
+        System.out.println("*** New Routines ***");
+        System.out.println();
+
+        CalculateHelper helper = new CalculateHelper();
+
+        for (String statement:statements) { //for each statement in our statements array
+
+            try {
+                helper.process(statement);
+                System.out.println(helper); //tostring as object class == not overridden like in the example we did before -- but then we did!!
+            } catch(InvalidStatementException e) {
+                System.out.println(e.getMessage());
+                if (e.getCause() != null)
+                    System.out.println("   Original Exception:  " + e.getCause().getMessage());
+            }
+        }
+
+
 
 
 
