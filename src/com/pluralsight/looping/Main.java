@@ -1,175 +1,80 @@
-package com.pluralsight.looping;
+package com.pluralsight.calcengine2;
 
 public class Main {
 
     public static void main(String[] args) {
 
-/*
-    int kVal = 5;
-    int factorial = 1;
+        // define an array of math equation classes, still need to create the instances for each array member
+        MathEquation[] equations_class = new MathEquation[4];
+        // e.g. Flight lax1 = new Flight();
 
+        /*
+        // define each array instance
+        equations_class[0] = new MathEquation();
+        equations_class[1] = new MathEquation();
+        equations_class[2] = new MathEquation();
+        equations_class[3] = new MathEquation();
 
-    // While Loop
-    while(kVal > 1) {
-        factorial *= kVal;
-        kVal -= 1;
-        System.out.println(factorial);
-        System.out.println(kVal);
-    }
+        //define each variable in each instance
+        equations_class[0].leftVal = 100.0d;
+        equations_class[0].rightVal = 50.0d;
+        equations_class[0].opCode = 'd';
 
-    while(kVal > 1)
-        factorial *= kVal--;
-        System.out.println(factorial);
-        System.out.println(kVal);
+        equations_class[1].leftVal = 25.0d;
+        equations_class[1].rightVal = 92.0d;
+        equations_class[1].opCode = 'a';
 
+        equations_class[2].leftVal = 225.0d;
+        equations_class[2].rightVal = 17.0d;
+        equations_class[2].opCode = 's';
 
+        equations_class[3].leftVal = 11.0d;
+        equations_class[3].rightVal = 3.0d;
+        equations_class[3].opCode = 'm';
 
-    //Do-While Loop, check condition at end of loop, will always execute one time
-
-    int iVal = 5;
-
-    do {
-
-        System.out.print(iVal);
-        System.out.print(" * 2 = ");
-        iVal *= 2;
-        System.out.println(iVal);
-
-    } while(iVal < 100);
-
-*/
-
-    //For Loop, condition checked at loop
-    /*
-    int iVal = 1;
-
-    while(iVal < 100) {
-        System.out.println(iVal);
-        iVal *= 2;
-    }
-
-
-     for (int iVal = 1; iVal < 100; iVal *=2) {
-         System.out.println(iVal);
-         System.out.println("hello");
-     }
-
-
-    float[] theVals = new float[3];
-
-    theVals[0] = 10.0f;
-    theVals[1] = 20.0f;
-    theVals[2] = 15.0f;
-
-    float sum = 0.0f;
-
-    for (int i = 0; i < theVals.length; i++)
-        sum += theVals[i];
-
-    System.out.println(sum);
-
-
-
-    float[] theVals = {10.0f, 20.0f, 15.0f};
-
-    float sum = 0.0f;
-
-    for (int i = 0; i < theVals.length; i++)
-        sum += theVals[i];
-
-    System.out.println(sum);
-
-
-    float[] theVals = {10.0f, 20.0f, 15.0f};
-    float sum = 0.0f;
-
-    for(float currentval : theVals)
-        sum += currentval;
-
-    System.out.println(sum);
-
-
-    int iVal = 11;
-
-    switch(iVal % 2) {
-        case 0:
-            System.out.print(iVal);
-            System.out.println(" is even");
-            break;
-        case 1:
-            System.out.print(iVal);
-            System.out.println(" is odd");
-            break;
-        default:
-            System.out.println("oops it broke");
-            break;
-    }
-
-
-    // parallel arrrays
-
-    double[] leftVals = {100.0d, 25.0d, 225.0d, 11.0d};
-    double[] rightVals = {50.0d, 92.0d, 17.0d, 3.0d};
-    char[] opCodes = {'d', 'a', 's', 'm'};
-    double[] results = new double[opCodes.length];
-
-    for (int i = 0; i < opCodes.length; i++)
-        if (opCodes[i] == 'a')
-            results[i] = leftVals[i] + rightVals[i];
-
-        else if (opCodes[i] == 's')
-            results[i] = leftVals[i] - rightVals[i];
-
-        else if (opCodes[i] == 'm')
-            results[i] = leftVals[i] * rightVals[i];
-
-        else if (opCodes[i] == 'd') {
-            results[i] = rightVals[i] != 0.0d ? leftVals[i] / rightVals[i] : 0.0d;
-        }
-        else {
-            System.out.println("Error - invalid opCode");
-            results[i] = 0.0d;
-        }
-
-        for(double theResult : results) {
-            System.out.print("Result = ");
-            System.out.println(theResult);
-        }
-*/
-    // parallel arrrays
-
-    double[] leftVals = {100.0d, 25.0d, 225.0d, 11.0d};
-    double[] rightVals = {50.0d, 92.0d, 17.0d, 3.0d};
-    char[] opCodes = {'d', 'a', 's', 'm'};
-    double[] results = new double[opCodes.length];
-
-    for (int i = 0; i < opCodes.length; i++)
-        switch (opCodes[i]) {
-
-            case 'a':
-                results[i] = leftVals[i] + rightVals[i];
-                break;
-            case 's':
-                results[i] = leftVals[i] - rightVals[i];
-                break;
-            case 'm':
-                results[i] = leftVals[i] * rightVals[i];
-                break;
-            case 'd':
-                results[i] = rightVals[i] != 0.0d ? leftVals[i] / rightVals[i] : 0.0d;
-                break;
-            default:
-                System.out.println("Error - invalid opCode");
-                results[i] = 0.0d;
-                break;
-        }
-
-    for(double theResult : results) {
+        //execute to do the math and print the result
+        equations_class[0].execute();
         System.out.print("Result = ");
-        System.out.println(theResult);
+        System.out.println(equations_class[0].result);
+
+        equations_class[1].execute();
+        System.out.print("Result = ");
+        System.out.println(equations_class[1].result);
+
+        equations_class[2].execute();
+        System.out.print("Result = ");
+        System.out.println(equations_class[2].result);
+
+        equations_class[3].execute();
+        System.out.print("Result = ");
+        System.out.println(equations_class[3].result);
+        */
+
+        // OR -- write a loop to do all of the above */
+
+        // fill those equation classes with values using the create method below
+        equations_class[0] = create_eq_instance(100.0d, 50.0d, 'd');
+        equations_class[1] = create_eq_instance(25.0d, 92.0d, 'a');
+        equations_class[2] = create_eq_instance(225.0d, 17.0d, 's');
+        equations_class[3] = create_eq_instance(11.0d, 3.0d, 'm');
+
+        for(MathEquation equation_loop : equations_class) {
+            equation_loop.execute();
+            System.out.print("Result = ");
+            System.out.println(equation_loop.getResult());
+        }
+
     }
 
+    // return back a new instance of mathequation (return type)
+    public static MathEquation create_eq_instance(double leftVal, double rightVal, char opCode ) {
 
+        MathEquation equation_here = new MathEquation();
+        equation_here.setLeftVal(leftVal);
+        equation_here.setRightVal(rightVal);
+        equation_here.setOpCode(opCode);
 
+        return equation_here;
     }
+
 }
