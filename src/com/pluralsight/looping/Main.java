@@ -76,7 +76,6 @@ public class Main {
             System.out.println(equation_loop.getResult());
         }
 
-
         Earth planet1 = new Earth();
         planet1.printEarth();
 

@@ -22,12 +22,14 @@ public class MathEquation {
     // Since result is created by this class, shouldn't be updated from outside the class
     public double getResult() {return result;}
 
-    public MathEquation() {};
+    public MathEquation() {}; //constructor that doesn't take any arguments
 
+    // constructor that accepts opcode
     public MathEquation(char opCode){
         this.opCode = opCode;
     }
 
+    // chains up to the prior constructor
     public MathEquation(char opCode, double leftVal, double rightVal){
         this(opCode);
         this.leftVal = leftVal;
