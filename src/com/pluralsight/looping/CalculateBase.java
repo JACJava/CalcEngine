@@ -26,7 +26,4 @@ public abstract class CalculateBase {
     public abstract void calculate();  // must be inherited from -- must be empty
 
 
-
-
-
 }

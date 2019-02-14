@@ -136,10 +136,28 @@ public class Main {
             System.out.println(calculator.getResult());
         }
 
+        // 20180801 More about data types
+
+        String[] statements = { //string array that has the strings we want to parse
+                "divide 100.0 50.0",   //100.0 / 50.0 = 2.0
+                "add 25.0 92.0",       //25.0 + 92.0 = 117.0
+                "subtract 225.0 17.0", //225.0 - 17.0 = 108.0
+                "multiply 11.0 3.0"    //11.0 * 3.0 = 33.0
+        };
+
+        System.out.println(statements[0]);
+        System.out.println(statements[1]);
+        System.out.println(statements[2]);
+        System.out.println(statements[3]);
+
+        CalculateHelper helper = new CalculateHelper();
+
+        for (String statement:statements) { //for each statement in our statements array
+            helper.process(statement);
+            System.out.println(helper); //tostring as object class == not overridden like in the example we did before -- but then we did!!
+        }
 
     }
-
-
 
 
 }
